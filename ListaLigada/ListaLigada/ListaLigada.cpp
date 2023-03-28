@@ -8,7 +8,7 @@ struct NO {
 };
 
 NO* primeiro = NULL;
-NO* ultimo = NULL
+NO* ultimo = NULL;
 
 // headers
 void menu();

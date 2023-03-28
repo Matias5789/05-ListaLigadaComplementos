@@ -8,7 +8,6 @@ struct NO {
 };
 
 NO* primeiro = NULL;
-NO* ultimo = NULL;
 
 // headers
 void menu();
@@ -125,17 +124,16 @@ void inserirElemento()
 	cout << "Digite o elemento: ";
 	cin >> novo->valor;
 	novo->prox = NULL;
+	
 
-	if (primeiro == NULL)
-	{
-		primeiro = novo;
-		ultimo = novo;
-	}
-	else
-	{
-		ultimo->prox = novo;
-		ultimo = novo;
-	}
+		NO* aux = primeiro;
+		while (aux->prox != NULL) {
+			if (aux->valor > novo->valor) {
+				break;
+			}
+			aux = aux->prox;
+		}
+			
 }
 
 void excluirElemento()
