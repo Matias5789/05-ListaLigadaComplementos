@@ -70,7 +70,7 @@ void menu()
 
 void inicializar()
 {
-	// se a lista j� possuir elementos
+	// se a lista já possuir elementos
 // libera a memoria ocupada
 	NO* aux = primeiro;
 	while (aux != NULL) {
@@ -125,15 +125,33 @@ void inserirElemento()
 	cin >> novo->valor;
 	novo->prox = NULL;
 	
-
+	if (primeiro == NULL) {// se não a nada! qualquer um será o primeiro.
+		primeiro = novo;
+	}
+	else if (primeiro->valor > novo->valor) { // verifica se o o primeiro elemente da lista atual é o primeiro.
+		NO* aux = primeiro;
+		primeiro = novo;
+		novo->prox = aux;
+	}
+	/* else { adiciona o novo elemento de forma ordenada na lista.  *logica do pimenta*
+		NO* aux = primeiro;
+		while (aux->prox != NULL && novo->valor > aux->prox->valor) {		leg:
+			aux = aux->prox;												&& = E
+		}																	|| = Ou
+		novo->prox = aux->prox;
+		aux->prox = novo;
+	}*/
+	else { //metodo claudio
 		NO* aux = primeiro;
 		while (aux->prox != NULL) {
-			if (aux->valor > novo->valor) {
+			if (aux->prox->valor > novo->valor) {
 				break;
-			}
+			} 
 			aux = aux->prox;
 		}
-			
+		novo->prox = aux->prox;
+		aux->prox = novo;
+	}
 }
 
 void excluirElemento()
