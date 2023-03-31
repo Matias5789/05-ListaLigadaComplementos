@@ -179,9 +179,33 @@ void excluirElemento() /* para a explicação da função, vá para o fim do cod
 	}
 }
 
-void buscarElemento()
-{
-
+void buscarElemento() {
+    NO* busca = (NO*)malloc(sizeof(NO));
+    cout << "Buscar: " << endl;
+    cin >> busca->valor;
+    busca->prox = NULL;
+    
+    if (primeiro == NULL) {
+        cout << "Lista vazia!" << endl;
+    }
+    else {
+        NO* aux = primeiro;
+        int cont = 0;
+        while (aux != NULL) {
+            if (aux->valor == busca->valor) {
+                cont++;
+            }
+            aux = aux->prox;
+        }
+        if (cont > 0) {
+            cout << "Elemento encontrado " << cont << " vezes." << endl;
+        }
+        else {
+            cout << "Numero nao encontrado." << endl;
+        }
+    }
+    
+    free(busca);
 }
 
 
