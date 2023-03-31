@@ -160,7 +160,7 @@ void excluirElemento() /* para a explicação da função, vá para o fim do cod
 	cout << "Digite o numero a ser excluido:" << endl;
 	cin >> deletar->valor;
 	deletar->prox = NULL;
-	if (primeiro == NULL) {
+	if (primeiro == NULL) { //verificando se a lista esta vazia
 		cout << "Lista vazia";
 	}
 	else if (deletar == primeiro) {
@@ -169,43 +169,45 @@ void excluirElemento() /* para a explicação da função, vá para o fim do cod
 	}
 	else { /*deletar != primero */
 		NO* aux = primeiro;
-		while (aux->prox != NULL) {
-			if (aux->prox->valor == deletar->valor) {
-				aux->prox = aux->prox->prox;
-				free(deletar);
-				break;
+		while (aux->prox != NULL) { //verificando se o proximo de aux (que no caso é primeiro) é ou n nulo
+			if (aux->prox->valor == deletar->valor) { /* caso ele entre no loop vai comparar se o valor proximo a aux(primeiro) proximo sendo
+			o ponteiro q aponta para o numero ao qual queremos excluir, ou seja vamos ver se o valor é igual ao numero digitado pelo usuario*/
+				aux->prox = aux->prox->prox; /* assim fazendo o proximo de aux(primeiro) começar a apontar para o proximo de valor, e o ponteiro
+				valor agr está armazenado na variavel "deletar" */
+				free(deletar); //assim logo após liberando a variavel
+				break; //para parar o loop.
 			}
 		}
 	}
 }
 
 void buscarElemento() {
-    NO* busca = (NO*)malloc(sizeof(NO));
-    cout << "Buscar: " << endl;
+    NO* busca = (NO*)malloc(sizeof(NO)); // não se pode fazer um novo nó sem valor, com o maloc vc está deixando ele vazio mas guardando um local na memoria para ele!
+    cout << "Numero a ser buscado: " << endl;
     cin >> busca->valor;
     busca->prox = NULL;
     
-    if (primeiro == NULL) {
+    if (primeiro == NULL) { //verificando se a lista esta vazia
         cout << "Lista vazia!" << endl;
     }
     else {
         NO* aux = primeiro;
         int cont = 0;
         while (aux != NULL) {
-            if (aux->valor == busca->valor) {
+            if (aux->valor == busca->valor) { //se o valor de aux for igual ao valor digitado pelo usuario ele soma 1 na variavel de contagem 
                 cont++;
             }
-            aux = aux->prox;
+            aux = aux->prox; // aux que nesse momento é primeiro, agr vai virar proximo de aux, ou seja o proximo do primeiro
         }
-        if (cont > 0) {
-            cout << "Elemento encontrado " << cont << " vezes." << endl;
+        if (cont > 0) { // a variavel de contagem é quem vai determinar se o numero foi encontrado ou não
+            cout << "Numero encontrado " << cont << " vezes." << endl;
         }
         else {
             cout << "Numero nao encontrado." << endl;
         }
     }
     
-    free(busca);
+    free(busca); // libera a variavel de busca para não deixar o espaço na memoria que ele ocupava.
 }
 
 
