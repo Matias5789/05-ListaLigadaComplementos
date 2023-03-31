@@ -136,8 +136,8 @@ void inserirElemento()
 	/* else { adiciona o novo elemento de forma ordenada na lista.  *logica do pimenta*
 		NO* aux = primeiro;
 		while (aux->prox != NULL && novo->valor > aux->prox->valor) {		leg:
-			aux = aux->prox;												&& = E
-		}																	|| = Ou
+			aux = aux->prox;						&& = E
+		}									|| = Ou
 		novo->prox = aux->prox;
 		aux->prox = novo;
 	}*/
