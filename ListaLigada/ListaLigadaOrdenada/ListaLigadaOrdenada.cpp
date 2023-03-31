@@ -200,7 +200,7 @@ void buscarElemento() {
             aux = aux->prox; // aux que nesse momento é primeiro, agr vai virar proximo de aux, ou seja o proximo do primeiro
         }
         if (cont > 0) { // a variavel de contagem é quem vai determinar se o numero foi encontrado ou não
-            cout << "Numero encontrado " << cont << " vezes." << endl;
+            cout << "Numero encontrado " << cont << endl;
         }
         else {
             cout << "Numero nao encontrado." << endl;
