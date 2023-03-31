@@ -185,8 +185,7 @@ void buscarElemento()
 }
 
 
-/*O código que você postou é uma função em C++ que exclui um elemento de uma lista encadeada, dado o valor do elemento a ser excluído.
-A função começa criando um novo nó deletar com o valor a ser excluído e apontando seu ponteiro prox para NULL.
+/*A função começa criando um novo nó deletar com o valor a ser excluído e apontando seu ponteiro prox para NULL.
 Em seguida, a função verifica se a lista está vazia. Se estiver vazia, a função imprime "Lista vazia".
 
 Se a lista não estiver vazia, a função verifica se o nó a ser excluído é a cabeça da lista (deletar == primeiro).
