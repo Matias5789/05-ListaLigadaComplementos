@@ -160,23 +160,22 @@ void excluirElemento() /* para a explicação da função, vá para o fim do cod
 	cout << "Digite o numero a ser excluido:" << endl;
 	cin >> deletar->valor;
 	deletar->prox = NULL;
-	if (primeiro == NULL) { //verificando se a lista esta vazia
+	if (primeiro == NULL) {
 		cout << "Lista vazia";
 	}
-	else if (deletar == primeiro) {
+	else if (deletar->valor == primeiro->valor) {
 		primeiro = primeiro->prox; /*primeiro passará a ser o proximo do primeiro, que no caso é NULL*/
 		free(deletar); /*free é usado para liberar o espaço ocupado na memoria pelo ponteiro*/
 	}
 	else { /*deletar != primero */
 		NO* aux = primeiro;
-		while (aux->prox != NULL) { //verificando se o proximo de aux (que no caso é primeiro) é ou n nulo
-			if (aux->prox->valor == deletar->valor) { /* caso ele entre no loop vai comparar se o valor proximo a aux(primeiro) proximo sendo
-			o ponteiro q aponta para o numero ao qual queremos excluir, ou seja vamos ver se o valor é igual ao numero digitado pelo usuario*/
-				aux->prox = aux->prox->prox; /* assim fazendo o proximo de aux(primeiro) começar a apontar para o proximo de valor, e o ponteiro
-				valor agr está armazenado na variavel "deletar" */
-				free(deletar); //assim logo após liberando a variavel
-				break; //para parar o loop.
+		while (aux->prox != NULL) {
+			if (aux->prox->valor == deletar->valor) {
+				aux->prox = aux->prox->prox;
+				free(deletar);
+				break;
 			}
+			aux = aux->prox;
 		}
 	}
 }
