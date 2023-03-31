@@ -154,9 +154,29 @@ void inserirElemento()
 	}
 }
 
-void excluirElemento()
+void excluirElemento() /* para a explicação da função, vá para o fim do codigo*/
 {
-
+	NO* deletar = (NO*)malloc(sizeof(NO));
+	cout << "Digite o numero a ser excluido:" << endl;
+	cin >> deletar->valor;
+	deletar->prox = NULL;
+	if (primeiro == NULL) {
+		cout << "Lista vazia";
+	}
+	else if (deletar == primeiro) {
+		primeiro = primeiro->prox; /*primeiro passará a ser o proximo do primeiro, que no caso é NULL*/
+		free(deletar); /*free é usado para liberar o espaço ocupado na memoria pelo ponteiro*/
+	}
+	else { /*deletar != primero */
+		NO* aux = primeiro;
+		while (aux->prox != NULL) {
+			if (aux->prox->valor == deletar->valor) {
+				aux->prox = aux->prox->prox;
+				free(deletar);
+				break;
+			}
+		}
+	}
 }
 
 void buscarElemento()
@@ -165,3 +185,15 @@ void buscarElemento()
 }
 
 
+/*O código que você postou é uma função em C++ que exclui um elemento de uma lista encadeada, dado o valor do elemento a ser excluído.
+A função começa criando um novo nó deletar com o valor a ser excluído e apontando seu ponteiro prox para NULL.
+Em seguida, a função verifica se a lista está vazia. Se estiver vazia, a função imprime "Lista vazia".
+
+Se a lista não estiver vazia, a função verifica se o nó a ser excluído é a cabeça da lista (deletar == primeiro).
+
+Se for, a função atualiza primeiro para apontar para o próximo elemento da lista e libera a memória alocada para o nó deletar usando "free()".
+
+Se o nó a ser excluído não for a cabeça da lista, a função percorre a lista com um ponteiro "aux" e verifica se o próximo nó em relação a "aux" tem o valor a ser excluído.
+Se tiver, a função atualiza o ponteiro prox de aux para pular o nó a ser excluído e libera a memória alocada para o nó deletar usando "free()".
+
+Note que a função percorre a lista enquanto "aux->prox != NULL".*/
